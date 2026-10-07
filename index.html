@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maze Boo</title>
+  <meta name="description" content="Maze Boo: guide Boo through a new maze every level. Grab every coin, dodge the hunters!">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f6f4fb;
+      --card: #ffffff;
+      --text: #1f1b2e;
+      --muted: #5f5873;
+      --accent: #6a3fd1;
+      --accent-text: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #14111d;
+        --card: #1f1a2c;
+        --text: #f1eef8;
+        --muted: #aaa3bd;
+        --accent: #9b78f0;
+        --accent-text: #14111d;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px 16px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.5;
+    }
+    main {
+      width: 100%;
+      max-width: 480px;
+      padding: 40px 32px;
+      border-radius: 20px;
+      background: var(--card);
+      text-align: center;
+    }
+    h1 { margin: 0 0 8px; font-size: 2.2rem; }
+    p { margin: 0 0 28px; color: var(--muted); }
+    .store {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--accent-text);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    nav { margin-top: 28px; font-size: 0.95rem; }
+    nav a { color: var(--accent); margin: 0 10px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Maze Boo</h1>
+    <p>Guide Boo through a new maze every level: grab every coin, dodge the hunters!</p>
+    <a class="store" href="https://play.google.com/store/apps/details?id=com.mate_zakariadze.mazeboo">Get it on Google Play</a>
+    <nav>
+      <a href="https://sites.google.com/view/maze-boo-privacy-polic/home">Privacy policy</a>
+      <a href="https://sites.google.com/view/maze-boo-sup/home">Support</a>
+    </nav>
+  </main>
+</body>
+</html>
