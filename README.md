@@ -7,7 +7,7 @@ It is a static page for GitHub Pages, with no build step:
 
 | Path | What it is |
 |---|---|
-| `index.html` | The page: hero, how to play, powers, evolution, worlds, hunters, modes, browser play, FAQ, download |
+| `index.html` | The page: hero, how to play, powers, evolution, worlds, hunters, modes, social accounts, FAQ, download |
 | `assets/css/site.css` | All styles |
 | `assets/js/stores.js` | Store links: the right store for the device and the visitor's UTM campaign passed on |
 | `assets/js/site.js` | The page's behaviour: menu, Boo, the hidden-coin hunt, the hero film, reveals |

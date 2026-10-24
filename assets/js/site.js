@@ -150,7 +150,7 @@
 
   // Sections ease in as they arrive.
   if (!reduceMotion && "IntersectionObserver" in window) {
-    var items = document.querySelectorAll(".section-head, .step, .power, .form, .world, .hunter, .friend, .mode, .extras li, .web-play, .follow, .faq details");
+    var items = document.querySelectorAll(".section-head, .step, .power, .form, .world, .hunter, .friend, .mode, .extras li, .follow, .faq details");
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) { entry.target.classList.add("in"); io.unobserve(entry.target); }
