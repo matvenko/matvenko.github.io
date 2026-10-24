@@ -2,73 +2,580 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Maze Boo</title>
-  <meta name="description" content="Maze Boo: guide Boo through a new maze every level. Grab every coin, dodge the hunters!">
-  <style>
-    :root {
-      color-scheme: light dark;
-      --bg: #f6f4fb;
-      --card: #ffffff;
-      --text: #1f1b2e;
-      --muted: #5f5873;
-      --accent: #6a3fd1;
-      --accent-text: #ffffff;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #14111d;
-        --card: #1f1a2c;
-        --text: #f1eef8;
-        --muted: #aaa3bd;
-        --accent: #9b78f0;
-        --accent-text: #14111d;
-      }
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 24px 16px;
-      background: var(--bg);
-      color: var(--text);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.5;
-    }
-    main {
-      width: 100%;
-      max-width: 480px;
-      padding: 40px 32px;
-      border-radius: 20px;
-      background: var(--card);
-      text-align: center;
-    }
-    h1 { margin: 0 0 8px; font-size: 2.2rem; }
-    p { margin: 0 0 28px; color: var(--muted); }
-    .store {
-      display: inline-block;
-      padding: 12px 24px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: var(--accent-text);
-      font-weight: 600;
-      text-decoration: none;
-    }
-    nav { margin-top: 28px; font-size: 0.95rem; }
-    nav a { color: var(--accent); margin: 0 10px; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Maze Boo — a tiny ghost in a giant maze</title>
+  <meta name="description" content="Maze Boo is a free, cute top-down maze game for iPhone, iPad and Android. Grab every coin, dodge the hunters, stay on solid ground and evolve Boo through worlds of lava, ice, sand and sky.">
+  <link rel="canonical" href="https://matvenko.github.io/">
+  <meta name="theme-color" content="#1f1657">
+  <meta name="apple-itunes-app" content="app-id=6819451632">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Maze Boo">
+  <meta property="og:title" content="Maze Boo — a tiny ghost in a giant maze">
+  <meta property="og:description" content="Grab every coin, dodge the hunters and evolve Boo. Free on iPhone, iPad and Android.">
+  <meta property="og:url" content="https://matvenko.github.io/">
+  <meta property="og:image" content="https://matvenko.github.io/assets/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Maze Boo: Boo, an orange little ghost, on a maze of lava and stone">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="preload" as="image" href="assets/img/logo.webp" type="image/webp">
+  <link rel="stylesheet" href="assets/css/site.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Maze Boo",
+    "url": "https://matvenko.github.io/",
+    "image": "https://matvenko.github.io/assets/img/og.jpg",
+    "description": "A cute top-down maze game. Guide Boo, a little spirit, across a new maze every level: collect every coin, stay on solid ground and keep away from the hunters.",
+    "genre": ["Arcade", "Maze", "Casual"],
+    "gamePlatform": ["Android", "iOS", "Web browser"],
+    "applicationCategory": "Game",
+    "inLanguage": "en",
+    "author": { "@type": "Person", "name": "Mate Zakariadze" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "sameAs": [
+      "https://play.google.com/store/apps/details?id=com.mate_zakariadze.mazeboo",
+      "https://apps.apple.com/app/id6819451632",
+      "https://www.tiktok.com/@mazeboo_game",
+      "https://www.instagram.com/maze_boo_mobile/",
+      "https://www.facebook.com/profile.php?id=61595113745411"
+    ]
+  }
+  </script>
 </head>
 <body>
-  <main>
-    <h1>Maze Boo</h1>
-    <p>Guide Boo through a new maze every level: grab every coin, dodge the hunters!</p>
-    <a class="store" href="https://play.google.com/store/apps/details?id=com.mate_zakariadze.mazeboo">Get it on Google Play</a>
-    <nav>
-      <a href="https://sites.google.com/view/maze-boo-privacy-polic/home">Privacy policy</a>
-      <a href="https://sites.google.com/view/maze-boo-sup/home">Support</a>
-    </nav>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="sparkle" viewBox="0 0 24 24"><path d="M12 0c.9 6.4 4.6 10.6 12 12-7.4 1.4-11.1 5.6-12 12-.9-6.4-4.6-10.6-12-12C7.4 10.6 11.1 6.4 12 0z"/></symbol>
+      <symbol id="ghost" viewBox="0 0 60 70"><path d="M30 2C14.5 2 4 13.6 4 29v37l8.7-6.5 8.6 6.5 8.7-6.5 8.7 6.5 8.6-6.5L56 66V29C56 13.6 45.5 2 30 2z"/><ellipse cx="21" cy="30" rx="5" ry="7" fill="#1d1450"/><ellipse cx="39" cy="30" rx="5" ry="7" fill="#1d1450"/><ellipse cx="22.6" cy="27.5" rx="1.8" ry="2.4" fill="#fff"/><ellipse cx="40.6" cy="27.5" rx="1.8" ry="2.4" fill="#fff"/></symbol>
+      <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h12m-5-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="play" viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></symbol>
+      <symbol id="tiktok" viewBox="0 0 24 24"><path d="M16.6 2h-3.4v13.2a3 3 0 1 1-2.6-3V8.8a6.4 6.4 0 1 0 6 6.4V8.6a8 8 0 0 0 4.4 1.3V6.5a4.5 4.5 0 0 1-4.4-4.5z"/></symbol>
+      <symbol id="instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.2" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="17.4" cy="6.6" r="1.3"/></symbol>
+      <symbol id="facebook" viewBox="0 0 24 24"><path d="M13.6 22v-8.2h2.8l.4-3.3h-3.2V8.4c0-.9.3-1.6 1.6-1.6h1.7V3.9a23 23 0 0 0-2.5-.1c-2.5 0-4.2 1.5-4.2 4.3v2.4H7.4v3.3h2.8V22z"/></symbol>
+      <symbol id="check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    </defs>
+  </svg>
+
+  <header class="topbar" data-topbar>
+    <div class="wrap topbar-in">
+      <a class="brand" href="#top" aria-label="Maze Boo, back to the top">
+        <img src="assets/img/logo.webp" alt="" width="1200" height="250">
+      </a>
+      <nav class="nav" id="nav" aria-label="Sections">
+        <a href="#how">How to play</a>
+        <a href="#powers">Powers</a>
+        <a href="#evolve">Evolve</a>
+        <a href="#worlds">Worlds</a>
+        <a href="#hunters">Hunters</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="topbar-end">
+        <button class="coin-count" type="button" data-coin-count aria-label="Coins found on this page" hidden>
+          <img src="assets/img/icons/coin.webp" alt="" width="74" height="74">
+          <span><b data-coin-found>0</b>/<span data-coin-total>0</span></span>
+        </button>
+        <a class="btn btn-sun btn-small" href="#download" data-store-smart>Get the game</a>
+        <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false" data-menu>
+          <span class="sr">Menu</span><span class="menu-bars" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="sky" aria-hidden="true" data-sky></div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">Ready, set... BOO!</p>
+          <h1 class="hero-logo"><img src="assets/img/logo.webp" alt="Maze Boo" width="1200" height="250"></h1>
+          <p class="tagline">A tiny ghost in a giant maze.</p>
+          <p class="lede">Grab every coin, dodge the hunters and stay on solid ground, then evolve Boo and take on worlds of lava, ice, sand and sky.</p>
+          <div class="stores" data-stores>
+            <a class="badge badge-apple" href="https://apps.apple.com/app/id6819451632" data-store="apple" rel="noopener">
+              <img src="assets/img/badges/app-store.svg" alt="Download on the App Store" width="120" height="40">
+            </a>
+            <a class="badge badge-play" href="https://play.google.com/store/apps/details?id=com.mate_zakariadze.mazeboo" data-store="play" rel="noopener">
+              <img src="assets/img/badges/google-play.svg" alt="Get it on Google Play" width="180" height="53">
+            </a>
+          </div>
+          <a class="web-link" href="https://matvenko.github.io/mazeboo-web/" rel="noopener">
+            <svg aria-hidden="true"><use href="#play"/></svg>
+            <span>Or play Maze Mode in your browser</span>
+          </a>
+          <ul class="facts" aria-label="At a glance">
+            <li>Free to play</li>
+            <li>No in-app purchases</li>
+            <li>Ads only when you choose</li>
+          </ul>
+        </div>
+
+        <div class="hero-stage">
+          <svg class="float ghost ghost-cyan" aria-hidden="true"><use href="#ghost"/></svg>
+          <svg class="float ghost ghost-pink" aria-hidden="true"><use href="#ghost"/></svg>
+          <img class="float float-coin c1" src="assets/img/icons/coin.webp" alt="" width="74" height="74">
+          <img class="float float-coin c2" src="assets/img/icons/coin.webp" alt="" width="74" height="74">
+          <img class="float float-gem" src="assets/img/icons/gem.webp" alt="" width="90" height="88">
+          <div class="screen">
+            <video class="screen-video" autoplay muted loop playsinline preload="metadata" poster="assets/video/hero-poster.webp" aria-label="Maze Boo gameplay: Boo freezes hunters, raises a shield, teleports and runs through the worlds" data-hero-video>
+              <source src="assets/video/hero-loop.mp4" type="video/mp4">
+            </video>
+          </div>
+          <button class="boo" type="button" aria-label="Poke Boo" data-boo>
+            <span class="boo-arm boo-arm-l"></span>
+            <span class="boo-arm boo-arm-r"></span>
+            <span class="boo-body">
+              <span class="boo-visor">
+                <span class="boo-eyes" data-boo-eyes><span class="boo-eye"></span><span class="boo-eye"></span></span>
+                <span class="boo-smile"></span>
+              </span>
+            </span>
+            <span class="boo-bubble" data-boo-bubble aria-live="polite">Boo!</span>
+          </button>
+        </div>
+      </div>
+      <button class="coin-hidden" type="button" style="--x: 10%; --y: calc(100% - 96px)" aria-label="Collect a hidden coin" data-coin></button>
+    </section>
+
+    <!-- How to play -->
+    <section class="section section-day" id="how">
+      <div class="edge edge-day" aria-hidden="true"></div>
+      <div class="wrap">
+        <header class="section-head">
+          <p class="pill pill-boo">How to play</p>
+          <h2>Easy to learn. Hard to put down.</h2>
+          <p>Every level is a new maze. Clear it, and the next one is a little bigger.</p>
+        </header>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num">1</span>
+            <span class="step-art joystick" aria-hidden="true">
+              <img src="assets/img/icons/joystick-base.webp" alt="" width="160" height="160">
+              <img class="knob" src="assets/img/icons/joystick-knob.webp" alt="" width="160" height="160">
+            </span>
+            <h3>Move</h3>
+            <p>Steer Boo with the on-screen joystick.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">2</span>
+            <span class="step-art" aria-hidden="true"><img class="spin" src="assets/img/icons/coin.webp" alt="" width="74" height="74"></span>
+            <h3>Collect every coin</h3>
+            <p>Grab them all to clear the level. The mazes grow as you go deeper.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">3</span>
+            <span class="step-art tiles" aria-hidden="true"><span></span><span class="lava"></span><span></span><span></span></span>
+            <h3>Stay on solid ground</h3>
+            <p>Water, lava and quicksand are no place for a ghost. Fall off and you lose a life.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">4</span>
+            <span class="step-art" aria-hidden="true"><img class="wobble" src="assets/img/icons/life.webp" alt="" width="160" height="156"></span>
+            <h3>Dodge the hunters</h3>
+            <p>One touch from a hunter costs a life. Keep moving and plan your way out.</p>
+          </li>
+        </ol>
+        <p class="hint">
+          <span class="hint-arrow" aria-hidden="true"><svg><use href="#arrow"/></svg></span>
+          Down to the last coin? A <b>golden arrow</b> shows the way.
+        </p>
+      </div>
+      <button class="coin-hidden" type="button" style="--x: 92%; --y: 34px" aria-label="Collect a hidden coin" data-coin></button>
+    </section>
+
+    <!-- Powers -->
+    <section class="section section-white" id="powers">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="pill pill-frost">Powers</p>
+          <h2>A power for every close call</h2>
+          <p>The right power at the right moment turns a close call into an escape.</p>
+        </header>
+        <div class="powers">
+          <article class="power" style="--c: var(--trap)">
+            <div class="power-shot"><img src="assets/img/powers/trap.webp" alt="Guardian Boo runs past a row of golden spike traps in the Cave, a red hunter close behind" width="960" height="600" loading="lazy"></div>
+            <img class="power-icon" src="assets/img/icons/trap.webp" alt="" width="160" height="160" loading="lazy">
+            <h3>Trap</h3>
+            <p>Leave it behind you. The first hunter to step on it is locked in ice.</p>
+          </article>
+          <article class="power" style="--c: var(--frost)">
+            <div class="power-shot"><img src="assets/img/powers/freeze.webp" alt="Frost Boo between two hunters frozen in blocks of ice over the Burnt Lands' lava" width="960" height="600" loading="lazy"></div>
+            <img class="power-icon" src="assets/img/icons/freeze.webp" alt="" width="160" height="160" loading="lazy">
+            <h3>Freeze</h3>
+            <p>Stop every hunter on the board at once.</p>
+          </article>
+          <article class="power" style="--c: var(--shield)">
+            <div class="power-shot"><img src="assets/img/powers/shield.webp" alt="Guardian Boo inside a glowing golden shield bubble as two hunters close in on the Ice Cavern" width="960" height="600" loading="lazy"></div>
+            <img class="power-icon" src="assets/img/icons/shield.webp" alt="" width="160" height="160" loading="lazy">
+            <h3>Shield</h3>
+            <p>For a few seconds, hunters and hazards can't hurt you.</p>
+          </article>
+          <article class="power" style="--c: var(--tele)">
+            <div class="power-shot"><img src="assets/img/powers/teleport.webp" alt="Phantom Boo on a purple teleport swirl in the Sky Gardens, hunters on both sides" width="960" height="600" loading="lazy"></div>
+            <img class="power-icon" src="assets/img/icons/teleport.webp" alt="" width="160" height="160" loading="lazy">
+            <h3>Teleport</h3>
+            <p>Jump to a safe spot far from the hunters.</p>
+          </article>
+        </div>
+        <p class="swipe" aria-hidden="true">Swipe <svg><use href="#arrow"/></svg></p>
+        <p class="note">Buy charges with coins in the Shop, and make every power stronger with Boo Gems in Boo's Journey.</p>
+      </div>
+      <button class="coin-hidden" type="button" style="--x: 8%; --y: calc(100% - 34px)" aria-label="Collect a hidden coin" data-coin></button>
+    </section>
+
+    <!-- Evolve -->
+    <section class="section section-evolve" id="evolve">
+      <div class="edge edge-evolve" aria-hidden="true"></div>
+      <div class="wrap">
+        <header class="section-head">
+          <p class="pill pill-gem"><img src="assets/img/icons/gem.webp" alt="" width="90" height="88"> Evolve</p>
+          <h2>Help Boo grow</h2>
+          <p>Collect Boo Gems and evolve Boo, one form after another. Each form brings a new power, and you keep every power you have unlocked.</p>
+        </header>
+        <ol class="path">
+          <li class="form" style="--c: var(--boo)">
+            <span class="form-step">1</span>
+            <div class="form-shot"><img src="assets/img/forms/boo.webp" alt="Boo, round and orange with a black visor and glowing cyan eyes, in the Meadow" width="800" height="600" loading="lazy"></div>
+            <h3>Boo</h3>
+            <p class="form-line">Where every hero starts.</p>
+            <p class="form-power"><img src="assets/img/icons/trap.webp" alt="" width="160" height="160" loading="lazy"> Trap</p>
+          </li>
+          <li class="form" style="--c: var(--frost)">
+            <span class="form-step">2</span>
+            <div class="form-shot"><img src="assets/img/forms/frost-boo.webp" alt="Frost Boo, pale blue with ice crystals and a golden rim, in the Ice Cavern" width="800" height="600" loading="lazy"></div>
+            <h3>Frost Boo</h3>
+            <p class="form-line">Cool under pressure.</p>
+            <p class="form-power"><img src="assets/img/icons/freeze.webp" alt="" width="160" height="160" loading="lazy"> Freeze</p>
+          </li>
+          <li class="form" style="--c: var(--guard)">
+            <span class="form-step">3</span>
+            <div class="form-shot"><img src="assets/img/forms/guardian-boo.webp" alt="Guardian Boo, pink with golden guards, in the Burnt Lands" width="800" height="600" loading="lazy"></div>
+            <h3>Guardian Boo</h3>
+            <p class="form-line">Nothing gets through.</p>
+            <p class="form-power"><img src="assets/img/icons/shield.webp" alt="" width="160" height="160" loading="lazy"> Shield</p>
+          </li>
+          <li class="form" style="--c: var(--tele)">
+            <span class="form-step">4</span>
+            <div class="form-shot"><img src="assets/img/forms/phantom-boo.webp" alt="Phantom Boo, with white and gold wings, in the Sky Gardens" width="800" height="600" loading="lazy"></div>
+            <h3>Phantom Boo</h3>
+            <p class="form-line">Now you see me…</p>
+            <p class="form-power"><img src="assets/img/icons/teleport.webp" alt="" width="160" height="160" loading="lazy"> Teleport</p>
+          </li>
+        </ol>
+        <p class="swipe" aria-hidden="true">Swipe <svg><use href="#arrow"/></svg></p>
+        <ul class="perks">
+          <li><img src="assets/img/icons/gem.webp" alt="" width="90" height="88" loading="lazy"><span><b>Boo Gems</b> are rare finds on the board and rewards on the achievement ladders.</span></li>
+          <li><span class="perk-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><b>Pick a colour</b> for every form you own.</span></li>
+          <li><img src="assets/img/icons/freeze.webp" alt="" width="160" height="160" loading="lazy"><span><b>Upgrade each power</b> in Boo's Journey.</span></li>
+        </ul>
+      </div>
+      <button class="coin-hidden" type="button" style="--x: 90%; --y: calc(100% - 30px)" aria-label="Collect a hidden coin" data-coin></button>
+    </section>
+
+    <!-- Worlds -->
+    <section class="section section-night" id="worlds">
+      <div class="edge edge-night" aria-hidden="true"></div>
+      <div class="wrap">
+        <header class="section-head on-dark">
+          <p class="pill pill-sky">Worlds</p>
+          <h2>Worlds to explore</h2>
+          <p>From green meadows to burning lava and floating gardens, every world brings new dangers and quicker hunters.</p>
+        </header>
+        <div class="worlds">
+          <article class="world" style="--c: var(--meadow)">
+            <img src="assets/img/worlds/meadow.webp" alt="A grassy maze in the Meadow, with water channels and hunters" width="960" height="600" loading="lazy">
+            <div class="world-text"><span class="world-tag">World 1</span><h3>Meadow</h3><p>Grassy paths over cool water. Where it all begins.</p></div>
+          </article>
+          <article class="world" style="--c: var(--burnt)">
+            <img src="assets/img/worlds/burnt-lands.webp" alt="Frost Boo racing along a dark path, a volcano glowing on the skyline of the Burnt Lands" width="960" height="600" loading="lazy">
+            <div class="world-text"><span class="world-tag">World 2</span><h3>Burnt Lands</h3><p>Lava below, a volcano on the skyline and a smouldering stalker on the prowl.</p></div>
+          </article>
+          <article class="world" style="--c: var(--ice)">
+            <img src="assets/img/worlds/ice-cavern.webp" alt="Frost Boo between frozen hunters in the Ice Cavern's white maze" width="960" height="600" loading="lazy">
+            <div class="world-text"><span class="world-tag">World 3</span><h3>Ice Cavern</h3><p>Frozen paths, icy trenches and a wanderer with a ring of ice.</p></div>
+          </article>
+          <article class="world" style="--c: var(--cave)">
+            <img src="assets/img/worlds/cave.webp" alt="A stone maze over rivers of lava under the purple Cave" width="960" height="600" loading="lazy">
+            <div class="world-text"><span class="world-tag">World 4</span><h3>Cave</h3><p>Stone paths over rivers of lava, deep under purple rock.</p></div>
+          </article>
+          <article class="world" style="--c: var(--sands)">
+            <img src="assets/img/worlds/sunken-sands.webp" alt="Phantom Boo on sandstone paths in the Sunken Sands, hunters behind" width="960" height="600" loading="lazy">
+            <div class="world-text"><span class="world-tag">World 5</span><h3>Sunken Sands</h3><p>Sandstone over quicksand, and whirlwinds that slow you down.</p></div>
+          </article>
+          <article class="world" style="--c: var(--sky)">
+            <img src="assets/img/worlds/sky-gardens.webp" alt="A white marble maze over the clouds in the Sky Gardens, pink trees and floating islands beyond" width="960" height="600" loading="lazy">
+            <div class="world-text"><span class="world-tag">World 6</span><h3>Sky Gardens</h3><p>Marble paths floating above the clouds. How far can you get?</p></div>
+          </article>
+        </div>
+        <p class="swipe" aria-hidden="true">Swipe <svg><use href="#arrow"/></svg></p>
+      </div>
+      <button class="coin-hidden" type="button" style="--x: 14%; --y: 30px" aria-label="Collect a hidden coin" data-coin></button>
+    </section>
+
+    <!-- Hunters -->
+    <section class="section section-spooky" id="hunters">
+      <div class="wrap">
+        <header class="section-head on-dark">
+          <p class="pill pill-hunter">Hunters</p>
+          <h2>Boo is not alone in the maze</h2>
+          <p>Some hunt, some wander, and two of them rule the maze. The Guide Book in the game knows every one of them.</p>
+        </header>
+        <div class="hunters">
+          <article class="hunter" data-role="hunter">
+            <img src="assets/img/hunters/frost-hunter.webp" alt="The Frost Hunter, a blue ghost with glowing eyes, on the Ice Cavern" width="640" height="480" loading="lazy">
+            <span class="role">Hunter</span>
+            <h3>Frost Hunter</h3>
+            <p>Cold, patient, and it always knows the shortest way to you.</p>
+            <p class="tip"><b>Tip:</b> keep moving and stay out of dead ends.</p>
+          </article>
+          <article class="hunter" data-role="hunter">
+            <img src="assets/img/hunters/ember-hunter.webp" alt="The Ember Hunter, a red ghost with yellow eyes, in the Meadow" width="640" height="480" loading="lazy">
+            <span class="role">Hunter</span>
+            <h3>Ember Hunter</h3>
+            <p>Hot-headed and quick, it charges straight at you.</p>
+            <p class="tip"><b>Tip:</b> put lava between you. It won't go round.</p>
+          </article>
+          <article class="hunter" data-role="hunter">
+            <img src="assets/img/hunters/scorch-predator.webp" alt="The Scorch Predator, dark with a grinning orange face and horns, in the Burnt Lands" width="640" height="480" loading="lazy">
+            <span class="role">Hunter</span>
+            <h3>Scorch Predator</h3>
+            <p>A smouldering stalker from the Burnt Lands.</p>
+            <p class="tip"><b>Tip:</b> keep a Freeze ready for when it closes in.</p>
+          </article>
+          <article class="hunter" data-role="wanderer">
+            <img src="assets/img/hunters/violet-wanderer.webp" alt="The Violet Wanderer, a purple ghost with pink eyes, in the Sky Gardens" width="640" height="480" loading="lazy">
+            <span class="role">Wanderer</span>
+            <h3>Violet Wanderer</h3>
+            <p>It isn't hunting you, but it is still deadly to touch.</p>
+            <p class="tip"><b>Tip:</b> watch which way it's heading and step aside.</p>
+          </article>
+          <article class="hunter" data-role="wanderer">
+            <img src="assets/img/hunters/lava-wanderer.webp" alt="The Lava Wanderer, a rock shell with glowing cracks, inside its ring of fire in the Cave" width="640" height="480" loading="lazy">
+            <span class="role">Wanderer</span>
+            <h3>Lava Wanderer</h3>
+            <p>A shell of cooled rock with lava still running in its cracks.</p>
+            <p class="tip"><b>Tip:</b> when its cracks turn yellow, get two tiles away.</p>
+          </article>
+          <article class="hunter" data-role="wanderer">
+            <img src="assets/img/hunters/ice-wanderer.webp" alt="The Ice Wanderer inside its blue ring of ice in the Ice Cavern" width="640" height="480" loading="lazy">
+            <span class="role">Wanderer</span>
+            <h3>Ice Wanderer</h3>
+            <p>A shell of white ice split by deep blue frozen cracks.</p>
+            <p class="tip"><b>Tip:</b> when its cracks blaze white, get three tiles away.</p>
+          </article>
+          <article class="hunter" data-role="boss">
+            <img src="assets/img/hunters/apex-ghoul.webp" alt="The Apex Ghoul, a big purple boss with claws and a golden grin, in the Sunken Sands" width="640" height="480" loading="lazy">
+            <span class="role">Boss</span>
+            <h3>Apex Ghoul</h3>
+            <p>The top of the food chain: fast and clever.</p>
+            <p class="tip"><b>Tip:</b> save a Freeze or a Teleport for when it corners you.</p>
+          </article>
+          <article class="hunter" data-role="boss">
+            <img src="assets/img/hunters/white-apex.webp" alt="The White Apex, a pale boss with icy claws, in the dark Cave" width="640" height="480" loading="lazy">
+            <span class="role">Boss</span>
+            <h3>White Apex</h3>
+            <p>Pale, silent, and the deadliest thing in the maze.</p>
+            <p class="tip"><b>Tip:</b> keep a Teleport in reserve.</p>
+          </article>
+        </div>
+        <p class="swipe" aria-hidden="true">Swipe <svg><use href="#arrow"/></svg></p>
+
+        <article class="friend">
+          <img src="assets/img/hunters/friendly-spectral.webp" alt="The Friendly Spectral, a white ghost with a happy smile" width="480" height="480" loading="lazy">
+          <div>
+            <span class="role role-friend">Friend</span>
+            <h3>…and one shy friend</h3>
+            <p>The <b>Friendly Spectral</b> is harmless and scared of you. Catch it for a surprise prize: now and then a Boo Gem, otherwise a charge, coins, a life or a burst of speed.</p>
+            <p class="tip"><b>Tip:</b> herd it into a corner or a dead end.</p>
+          </div>
+        </article>
+      </div>
+      <button class="coin-hidden" type="button" style="--x: 88%; --y: 36px" aria-label="Collect a hidden coin" data-coin></button>
+    </section>
+
+    <!-- Modes -->
+    <section class="section section-day" id="modes">
+      <div class="edge edge-day" aria-hidden="true"></div>
+      <div class="wrap">
+        <header class="section-head">
+          <p class="pill pill-meadow">Play your way</p>
+          <h2>Two ways to play</h2>
+          <p>Switch any time on the main menu.</p>
+        </header>
+        <div class="modes">
+          <article class="mode mode-normal">
+            <span class="mode-badge" aria-hidden="true"><svg><use href="#check"/></svg></span>
+            <h3>Normal</h3>
+            <p>Relaxed and friendly. The lava lies scattered across open boards.</p>
+          </article>
+          <article class="mode mode-maze">
+            <span class="mode-badge" aria-hidden="true"><img src="assets/img/icons/cup.webp" alt="" width="160" height="160" loading="lazy"></span>
+            <h3>Maze Mode</h3>
+            <p>Every level turns into a maze of winding corridors. How deep can you go?</p>
+          </article>
+        </div>
+        <ul class="extras">
+          <li>
+            <img src="assets/img/icons/cup.webp" alt="" width="160" height="160" loading="lazy">
+            <h3>World leaderboards</h3>
+            <p>Compare your deepest run with players around the world, on separate boards for Normal and Maze Mode. You get a place without signing in.</p>
+          </li>
+          <li>
+            <img src="assets/img/icons/gem.webp" alt="" width="90" height="88" loading="lazy">
+            <h3>Achievements</h3>
+            <p>Climb the achievement ladders for Boo Gems, and keep a no-death streak for bonus coins.</p>
+          </li>
+          <li>
+            <img src="assets/img/icons/life.webp" alt="" width="160" height="156" loading="lazy">
+            <h3>Saves as you play</h3>
+            <p>Leave any time and pick up right where you stopped.</p>
+          </li>
+        </ul>
+      </div>
+      <button class="coin-hidden" type="button" style="--x: 6%; --y: calc(100% - 36px)" aria-label="Collect a hidden coin" data-coin></button>
+    </section>
+
+    <!-- Browser + social -->
+    <section class="section section-white section-tight">
+      <div class="wrap">
+        <div class="web-play">
+          <div class="web-play-text">
+            <p class="pill pill-white">No phone nearby?</p>
+            <h2>Try Maze Mode in your browser</h2>
+            <p>Boo with every power, a quick trip through every world. No download, no ads.</p>
+            <a class="btn btn-white" href="https://matvenko.github.io/mazeboo-web/" rel="noopener">
+              <svg aria-hidden="true"><use href="#play"/></svg> Play in the browser
+            </a>
+            <p class="small">Best on a computer.</p>
+          </div>
+          <div class="web-play-window" aria-hidden="true">
+            <div class="window-bar"><i></i><i></i><i></i><span>matvenko.github.io/mazeboo-web</span></div>
+            <img src="assets/img/worlds/sky-gardens.webp" alt="" width="960" height="600" loading="lazy">
+          </div>
+        </div>
+
+        <div class="follow">
+          <h2 class="follow-title">Follow Boo</h2>
+          <p class="follow-sub">New clips from the maze, updates and behind the scenes.</p>
+          <div class="socials">
+            <a class="social social-tiktok" href="https://www.tiktok.com/@mazeboo_game" rel="noopener">
+              <span class="social-icon" aria-hidden="true"><svg><use href="#tiktok"/></svg></span>
+              <span><b>TikTok</b><span>@mazeboo_game</span></span>
+              <svg class="social-arrow" aria-hidden="true"><use href="#arrow"/></svg>
+            </a>
+            <a class="social social-instagram" href="https://www.instagram.com/maze_boo_mobile/" rel="noopener">
+              <span class="social-icon" aria-hidden="true"><svg><use href="#instagram"/></svg></span>
+              <span><b>Instagram</b><span>@maze_boo_mobile</span></span>
+              <svg class="social-arrow" aria-hidden="true"><use href="#arrow"/></svg>
+            </a>
+            <a class="social social-facebook" href="https://www.facebook.com/profile.php?id=61595113745411" rel="noopener">
+              <span class="social-icon" aria-hidden="true"><svg><use href="#facebook"/></svg></span>
+              <span><b>Facebook</b><span>Maze Boo</span></span>
+              <svg class="social-arrow" aria-hidden="true"><use href="#arrow"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-day" id="faq">
+      <div class="wrap wrap-narrow">
+        <header class="section-head">
+          <p class="pill pill-boo">FAQ</p>
+          <h2>Questions, answered</h2>
+        </header>
+        <div class="faq">
+          <details>
+            <summary>Is Maze Boo free?</summary>
+            <p>Yes. Maze Boo is free to download and play, and it has no in-app purchases. Ads are optional: a short video plays only when you choose one for a reward, such as an extra life.</p>
+          </details>
+          <details>
+            <summary>What can I play it on?</summary>
+            <p>On Android through <a href="https://play.google.com/store/apps/details?id=com.mate_zakariadze.mazeboo" data-store="play" rel="noopener">Google Play</a>, and on iPhone and iPad (iOS 15 or later) through the <a href="https://apps.apple.com/app/id6819451632" data-store="apple" rel="noopener">App Store</a>. Maze Mode also runs <a href="https://matvenko.github.io/mazeboo-web/" rel="noopener">in your browser</a>.</p>
+          </details>
+          <details>
+            <summary>Do I need an account?</summary>
+            <p>No. Open the game and play. You get a place on the world leaderboard straight away, under a name the game makes up for you. Sign in to Game Center or Google Play Games to show your own name and keep your place on a new device.</p>
+          </details>
+          <details>
+            <summary>Will I lose my progress if I close the game?</summary>
+            <p>No. Your run saves as you play, so you can leave any time and pick up where you stopped.</p>
+          </details>
+          <details>
+            <summary>How does Boo evolve?</summary>
+            <p>Collect Boo Gems and open Boo's Journey from the main menu. The forms come in a fixed order, Frost Boo, then Guardian Boo, then Phantom Boo, and each one adds a new power. You keep every power you have unlocked, whichever form you play.</p>
+          </details>
+          <details>
+            <summary>Which languages does it speak?</summary>
+            <p>Maze Boo is in English.</p>
+          </details>
+          <details>
+            <summary>I found a bug or need help.</summary>
+            <p>Please write through the <a href="https://sites.google.com/view/maze-boo-sup/home" rel="noopener">support page</a>. You can read how the game handles data in the <a href="https://sites.google.com/view/maze-boo-privacy-polic/home" rel="noopener">privacy policy</a>.</p>
+          </details>
+        </div>
+      </div>
+      <button class="coin-hidden" type="button" style="--x: 93%; --y: 40px" aria-label="Collect a hidden coin" data-coin></button>
+    </section>
+
+    <!-- Download -->
+    <section class="cta" id="download">
+      <div class="sky" aria-hidden="true" data-sky></div>
+      <div class="edge edge-cta" aria-hidden="true"></div>
+      <div class="wrap cta-in">
+        <img class="cta-icon" src="assets/img/app-icon.webp" alt="" width="256" height="256" loading="lazy">
+        <p class="kicker">Ready, set... BOO!</p>
+        <h2>Get Maze Boo free</h2>
+        <p>On iPhone, iPad and Android.</p>
+        <div class="stores" data-stores>
+          <a class="badge badge-apple" href="https://apps.apple.com/app/id6819451632" data-store="apple" rel="noopener">
+            <img src="assets/img/badges/app-store.svg" alt="Download on the App Store" width="120" height="40" loading="lazy">
+          </a>
+          <a class="badge badge-play" href="https://play.google.com/store/apps/details?id=com.mate_zakariadze.mazeboo" data-store="play" rel="noopener">
+            <img src="assets/img/badges/google-play.svg" alt="Get it on Google Play" width="180" height="53" loading="lazy">
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer">
+    <div class="wrap footer-in">
+      <div class="footer-brand">
+        <img src="assets/img/logo.webp" alt="Maze Boo" width="1200" height="250" loading="lazy">
+        <p>Made with <span class="heart" aria-label="love">♥</span> in Georgia by Mate Zakariadze, an independent game developer.</p>
+      </div>
+      <nav class="footer-links" aria-label="More">
+        <a href="https://sites.google.com/view/maze-boo-sup/home" rel="noopener">Support</a>
+        <a href="https://sites.google.com/view/maze-boo-privacy-polic/home" rel="noopener">Privacy policy</a>
+        <a href="https://www.tiktok.com/@mazeboo_game" rel="noopener">TikTok</a>
+        <a href="https://www.instagram.com/maze_boo_mobile/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61595113745411" rel="noopener">Facebook</a>
+        <a href="https://matvenko.github.io/mazeboo-web/" rel="noopener">Play in the browser</a>
+      </nav>
+      <p class="legal">© 2026 Maze Boo. Apple, the Apple logo, iPhone and iPad are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.</p>
+    </div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite" data-toast hidden></div>
+
+  <script src="assets/js/stores.js"></script>
+  <script src="assets/js/site.js"></script>
 </body>
 </html>
