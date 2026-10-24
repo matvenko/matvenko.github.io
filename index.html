@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Maze Boo — a tiny ghost in a giant maze</title>
-  <meta name="description" content="Maze Boo is a free, cute top-down maze game for iPhone, iPad and Android. Grab every coin, dodge the hunters, stay on solid ground and evolve Boo through worlds of lava, ice, sand and sky.">
+  <meta name="description" content="Maze Boo is a free, cute top-down maze game for iPhone, iPad and Android. Grab every coin, dodge the hunters, stay on solid ground and evolve Boo through worlds of lava, ice, sand, glowing mushrooms and sky.">
   <link rel="canonical" href="https://matvenko.github.io/">
   <meta name="theme-color" content="#1f1657">
   <meta name="apple-itunes-app" content="app-id=6819451632">
@@ -104,7 +104,7 @@
           <p class="kicker">Ready, set... BOO!</p>
           <h1 class="hero-logo"><img src="assets/img/logo.webp" alt="Maze Boo" width="1200" height="250"></h1>
           <p class="tagline">A tiny ghost in a giant maze.</p>
-          <p class="lede">Grab every coin, dodge the hunters and stay on solid ground, then evolve Boo and take on worlds of lava, ice, sand and sky.</p>
+          <p class="lede">Grab every coin, dodge the hunters and stay on solid ground, then evolve Boo and take on worlds of lava, ice, sand, glowing mushrooms and sky.</p>
           <div class="stores" data-stores>
             <a class="badge badge-apple" href="https://apps.apple.com/app/id6819451632" data-store="apple" rel="noopener">
               <img src="assets/img/badges/app-store.svg" alt="Download on the App Store" width="120" height="40">
@@ -289,7 +289,7 @@
         <header class="section-head on-dark">
           <p class="pill pill-sky">Worlds</p>
           <h2>Worlds to explore</h2>
-          <p>From green meadows to burning lava and floating gardens, every world brings new dangers and quicker hunters.</p>
+          <p>From green meadows to burning lava, glowing forests and floating gardens, every world brings new dangers and quicker hunters.</p>
         </header>
         <div class="worlds">
           <article class="world" style="--c: var(--meadow)">
@@ -312,9 +312,13 @@
             <img src="assets/img/worlds/sunken-sands.webp" alt="Phantom Boo on sandstone paths in the Sunken Sands, hunters behind" width="960" height="600" loading="lazy">
             <div class="world-text"><span class="world-tag">World 5</span><h3>Sunken Sands</h3><p>Sandstone over quicksand, and whirlwinds that slow you down.</p></div>
           </article>
+          <article class="world" style="--c: var(--forest)">
+            <img src="assets/img/worlds/glowshroom-forest.webp" alt="The Glowshroom Forest at night: a stone maze over a glowing violet pool, red bounce mushrooms on its paths, giant teal mushrooms and twisted trees beyond" width="960" height="600" loading="lazy">
+            <div class="world-text"><span class="world-tag">World 6</span><h3>Glowshroom Forest</h3><p>A forest at night, lit by glowing mushrooms. Hop the red ones to get away.</p></div>
+          </article>
           <article class="world" style="--c: var(--sky)">
             <img src="assets/img/worlds/sky-gardens.webp" alt="A white marble maze over the clouds in the Sky Gardens, pink trees and floating islands beyond" width="960" height="600" loading="lazy">
-            <div class="world-text"><span class="world-tag">World 6</span><h3>Sky Gardens</h3><p>Marble paths floating above the clouds. How far can you get?</p></div>
+            <div class="world-text"><span class="world-tag">World 7</span><h3>Sky Gardens</h3><p>Marble paths floating above the clouds. How far can you get?</p></div>
           </article>
         </div>
         <p class="swipe" aria-hidden="true">Swipe <svg><use href="#arrow"/></svg></p>
@@ -372,6 +376,13 @@
             <h3>Ice Wanderer</h3>
             <p>A shell of white ice split by deep blue frozen cracks.</p>
             <p class="tip"><b>Tip:</b> when its cracks blaze white, get three tiles away.</p>
+          </article>
+          <article class="hunter" data-role="wanderer">
+            <img src="assets/img/hunters/toxic-wanderer.webp" alt="The Toxic Wanderer, a dark shell with poison-green cracks, inside its cloud of gas in the Glowshroom Forest" width="640" height="480" loading="lazy">
+            <span class="role">Wanderer</span>
+            <h3>Toxic Wanderer</h3>
+            <p>A violet shell with poison seeping out of its cracks.</p>
+            <p class="tip"><b>Tip:</b> when its cracks turn green, get three tiles away.</p>
           </article>
           <article class="hunter" data-role="boss">
             <img src="assets/img/hunters/apex-ghoul.webp" alt="The Apex Ghoul, a big purple boss with claws and a golden grin, in the Sunken Sands" width="640" height="480" loading="lazy">
